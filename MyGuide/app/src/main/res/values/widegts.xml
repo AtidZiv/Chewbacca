@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="widgets_clock_steps">
+        <item>widgets_clock_step1.m4a</item>
+    </string-array>
+</resources>

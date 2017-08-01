@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MyGuide</string>
+    <string name="btn_widgets_guide">Widgets guide</string>
+    <string name="txtPointBlankSpot">יש למצוא מקום ריק כמו בתמונה וללחוץ עליו מספר שניות עד שנפתח חלון נוסף</string>
+    <string name="btnCloseUnderstood">הבנתי. סגור</string>
+    <string name="btnNextStep">הבא</string>
+    <string name="intro_text">ברוכים הבאים ל- iGuide המדריך האישי שלכם לתפעול המכשיר. ההדרכה הינה הדרכה קולית אשר תלווה אתכם לאורך כל פעולה שתבחרו.</string>
+    <string name="actionType">בחרו בקטגוריה הרצויה:</string>
+    <string name="widgetButton1">הוספת יישומונים \\ ויג\'טים</string>
+    <string name="SubCategoriesIntro">בחרו את הפעולה שתרצו לבצע:</string>
+    <string name="btnBack">חזור</string>
+    <string name="btnAgain">נגן שוב</string>
+    <string name="btnMore">עוד</string>
+    <string name="btnStartOver">מהתחלה</string>
+    <string name="btnPrev">הקודם</string>
+</resources>
+
