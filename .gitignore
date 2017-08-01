@@ -1,2 +1,7 @@
 MyGuide/build/
 MyGuide/app/build/
+MyGuide/local.properties
+MyGuide/MyGuide.iml
+MyGuide/.gradle/
+MyGuide/.idea/
+MyGuide/app/app.iml
