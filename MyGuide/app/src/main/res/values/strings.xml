@@ -13,5 +13,18 @@
     <string name="btnMore">עוד</string>
     <string name="btnStartOver">מהתחלה</string>
     <string name="btnPrev">הקודם</string>
+
+    <string-array name="array_categories">
+        <item>הוספת יישומונים(ויג\'טים)</item>
+        <item>אנשי קשר</item>
+        <item>שימוש בחנות אפליקציות</item>
+    </string-array>
+
+    <string-array name="array_subcategories">
+        <item>הוספת שעון למסך הבית</item>
+        <item>הוספת לוח שנה למסך הבית</item>
+        <item>הוספת שורת חיפוש של גוגל למסך הבית</item>
+    </string-array>
+
 </resources>
 

@@ -86,6 +86,8 @@ public class AudioFloater extends Floater {
         btnBackToActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mediaPlayer != null)
+                    mediaPlayer.stop();
                 Dismiss();
                 Intent intent = new Intent(context, backToActivityClass);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

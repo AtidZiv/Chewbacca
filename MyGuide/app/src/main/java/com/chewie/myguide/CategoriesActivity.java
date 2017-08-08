@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -15,37 +17,27 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class CategoriesActivity extends AppCompatActivity {
-    ListView listView;
-    SimpleCursorAdapter mAdapter;
-    ArrayList<String> chooseAction;
-    View row;
-    LayoutInflater inflater = getLayoutInflater();
-    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
-        ArrayAdapter<String> adapter;
-       // String [] chooseAction = {"הוספת יישומונים(ויג'טים)", "אנשי קשר", "שימוש בחנות אפליקציות"};
-        listView = (ListView)findViewById(R.id.list_view);
-        chooseAction = new ArrayList<String>();
-        chooseAction.add("הוספת יישומונים(ויג'טים)");
-        chooseAction.add("אנשי קשר");
-        chooseAction.add("שימוש בחנות אפליקציות");
-        //adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, chooseAction);
-        //listView.setAdapter(adapter);
-        listView.setAdapter(new ArrayAdapter<String>(this, 0, chooseAction));
+
+        String[] chooseAction = getResources().getStringArray(R.array.array_categories);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, chooseAction);
+        ListView lvCategories = (ListView)findViewById(R.id.lvCategories);
+        lvCategories.setAdapter(adapter);
+        lvCategories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                onSubCatergories(view);
+            }
+        });
 
         //MediaPlayer mediaPlayer = MediaPlayer.create(CategoriesActivity.this, R.raw.select_category);
         //mediaPlayer.start();
     }
-    public View getView(int position, View convertView, ViewGroup parent){
-            row = inflater.inflate(android.R.layout.simple_list_item_1, parent, false);
-            tv = (TextView) row.findViewById(android.R.id.text1);
-            tv.setText(chooseAction.get(position));
-            return row;
-};
+
     public void onSubCatergories(View view)
     {
         Intent intent = new Intent(this, SubCategoriesActivity.class);
