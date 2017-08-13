@@ -32,35 +32,16 @@ public class WidgetsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widgets_audio);
 
-        final Button btnPrevStep = (Button)findViewById(R.id.btnPrevStep);
-
-        final Button btnNextStep = (Button)findViewById(R.id.btnNextStep);
-        btnNextStep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(WidgetsActivity.this, R.raw.widgets_clock_step1);
-                mediaPlayer.start();
-            }
-        });
-
+        String chosenAction = getIntent().getStringExtra("action");
         int[] steps = {
-                R.raw.intro,
-                R.raw.select_category,
-                R.raw.select_sub_category,
-                R.raw.widgets_clock_step1
+                R.raw.widgets_clock_step1,
+                R.raw.widgets_clock_step2,
+                R.raw.widgets_clock_step3,
+                R.raw.widgets_clock_step4
+
         };
         final AudioFloater floater = new AudioFloater(this, steps, SubCategoriesActivity.class);
         floater.Display();
-        finish();
-    }
-
-    public void onButtonClose(View view)
-    {
-        String pkgName = "com.android.launcher";
-        Intent serviceIntent = new Intent(this, OverlayerService.class);
-        serviceIntent.putExtra(OverlayerService.PACKAGE_NAME, pkgName);
-        serviceIntent.putExtra(OverlayerService.NEXT_ACTIVITY, MainActivity.class.getCanonicalName());
-        startService(serviceIntent);
         finish();
     }
 }

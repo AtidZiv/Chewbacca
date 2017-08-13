@@ -20,7 +20,7 @@ public class AudioFloater extends Floater {
     int btnHeight = 150;
     int marginX = 10;
     int marginY = 10;
-    Button btnStartOver, btnNext, btnPlayAgain, btnBackToActivity, btnMore;
+    Button btnStartOver, btnNext, btnPlayAgain, btnBackToActivity, btnMore, btnExit;
 
     void playCurrentStep() {
         if (mediaPlayer != null)
@@ -37,11 +37,12 @@ public class AudioFloater extends Floater {
     }
 
     void showMore() {
-        resizeAndClear(btnWidth*2, btnHeight*2);
+        resizeAndClear(btnWidth*2, btnHeight*3);
         AddChild(btnStartOver, marginX, marginY, btnWidth, btnHeight);
         AddChild(btnBackToActivity, marginX+btnWidth, marginY, btnWidth, btnHeight);
         AddChild(btnPlayAgain, marginX, btnHeight, btnWidth, btnHeight);
         AddChild(btnNext, marginX+btnWidth, btnHeight, btnWidth, btnHeight);
+        AddChild(btnExit, marginX+btnWidth, btnHeight*2, btnWidth, btnHeight);
         AudioFloater.super.Display();
     }
 
@@ -101,6 +102,17 @@ public class AudioFloater extends Floater {
             @Override
             public void onClick(View v) {
                 showMore();
+            }
+        });
+
+        btnExit = new Button(context);
+        btnExit.setText(R.string.btnExit);
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayer != null)
+                    mediaPlayer.stop();
+                Dismiss();
             }
         });
     }

@@ -30,7 +30,8 @@
             android:exported="true" />
 
         <activity android:name=".CategoriesActivity" />
-        <activity android:name=".SubCategoriesActivity"></activity>
+        <activity android:name=".SubCategoriesActivity" />
+        <activity android:name=".Explanation"></activity>
     </application>
 
 </manifest>

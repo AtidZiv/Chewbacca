@@ -4,39 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.chewie.myguide.CategoriesActivity">
+    tools:context="com.chewie.myguide.Explanation">
 
     <TextView
-        android:id="@+id/txtCategoriesTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:id="@+id/textView5"
+        android:layout_width="281dp"
+        android:layout_height="242dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/actionType"
-        android:visibility="visible"
-        app:layout_constraintHorizontal_bias="0.532"
+        android:layout_marginTop="8dp"
+        android:text="@string/ExplnText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/actionType"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintVertical_bias="0.023"
+        tools:text="@string/ExplnText" />
 
-    <ListView
-        android:id="@+id/lvCategories"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onWidgets"
+        android:text="@string/StartGuide"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCategoriesTitle"
-        app:layout_constraintVertical_bias="0.024"
-        android:layout_marginTop="8dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.24"
+        tools:text="@string/StartGuide" />
 </android.support.constraint.ConstraintLayout>

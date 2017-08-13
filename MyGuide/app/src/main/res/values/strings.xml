@@ -13,6 +13,7 @@
     <string name="btnMore">עוד</string>
     <string name="btnStartOver">מהתחלה</string>
     <string name="btnPrev">הקודם</string>
+    <string name="btnExit">סיים</string>
 
     <string-array name="array_categories">
         <item>הוספת יישומונים(ויג\'טים)</item>
@@ -25,6 +26,8 @@
         <item>הוספת לוח שנה למסך הבית</item>
         <item>הוספת שורת חיפוש של גוגל למסך הבית</item>
     </string-array>
+    <string name="ExplnText">אנו עומדים להתחיל במדריך.  שימו לב! בכל שלב, על מנת לעבור להוראה הבאה, יש ללחוץ על "בוצע". על מנת לשמוע את ההוראה האחרונה שנית, יש ללחוץ על כפתור "עוד" ואז "נגן שוב</string>
+    <string name="StartGuide">התחלת מדריך</string>
 
 </resources>
 

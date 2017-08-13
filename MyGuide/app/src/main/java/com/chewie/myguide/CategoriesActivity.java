@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 public class CategoriesActivity extends AppCompatActivity {
 
+    MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,12 +36,14 @@ public class CategoriesActivity extends AppCompatActivity {
             }
         });
 
-        //MediaPlayer mediaPlayer = MediaPlayer.create(CategoriesActivity.this, R.raw.select_category);
-        //mediaPlayer.start();
+        mediaPlayer = MediaPlayer.create(CategoriesActivity.this, R.raw.select_category);
+        mediaPlayer.start();
     }
 
     public void onSubCatergories(View view)
     {
+        if (mediaPlayer != null)
+            mediaPlayer.stop();
         Intent intent = new Intent(this, SubCategoriesActivity.class);
         startActivity(intent);
         finish();
