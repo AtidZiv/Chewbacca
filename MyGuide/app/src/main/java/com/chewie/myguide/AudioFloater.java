@@ -29,14 +29,21 @@ public class AudioFloater extends Floater {
         mediaPlayer.start();
     }
 
-    void showLess() {
-        resizeAndClear(btnWidth, btnHeight*2);
-        AddChild(btnMore, marginX, marginY, btnWidth, btnHeight);
-        AddChild(btnNext, marginX, btnHeight, btnWidth, btnHeight);
+    void showLess(Button[] btns) {
+        resizeAndClear(btnWidth, btnHeight*btns.length);
+        int y = marginY;
+        for(Button btn : btns) {
+            AddChild(btn, marginX, y, btnWidth, btnHeight);
+            y += btnHeight;
+        }
         AudioFloater.super.Display();
     }
 
-    void showMore() {
+    void showLess() {
+        showLess(new Button[]{btnMore, btnNext});
+    }
+
+     void showMore() {
         resizeAndClear(btnWidth*2, btnHeight*3);
         AddChild(btnStartOver, marginX, marginY, btnWidth, btnHeight);
         AddChild(btnBackToActivity, marginX+btnWidth, marginY, btnWidth, btnHeight);
@@ -64,11 +71,12 @@ public class AudioFloater extends Floater {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLess();
                 curStep++;
                 playCurrentStep();
                 if (curStep == steps.length-1)
-                    btnNext.setEnabled(false);
+                    showLess(new Button[]{btnMore, btnExit});
+                else
+                    showLess();
             }
         });
 

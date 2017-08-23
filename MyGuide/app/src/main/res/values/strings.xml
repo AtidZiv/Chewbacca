@@ -19,13 +19,60 @@
         <item>הוספת יישומונים(ויג\'טים)</item>
         <item>אנשי קשר</item>
         <item>שימוש בחנות אפליקציות</item>
+        <item>התראות</item>
     </string-array>
 
-    <string-array name="array_subcategories">
+    <array name="array_categories_ids">
+        <item>@array/array_widgets</item>
+        <item>@array/array_contacts</item>
+        <item>@array/array_widgets</item>
+        <item>@array/array_notifications</item>
+    </array>
+
+    <array name="array_widget_clock_steps">
+        <item>@raw/widgets_clock_step1</item>
+        <item>@raw/widgets_clock_step2</item>
+        <item>@raw/widgets_clock_step3</item>
+        <item>@raw/widgets_clock_step4</item>
+    </array>
+
+    <array name="array_widgets_steps">
+        <item>@array/array_widget_clock_steps</item>
+        <item>@array/array_widget_clock_steps</item>
+        <item>@array/array_widget_clock_steps</item>
+    </array>
+
+    <string-array name="array_widgets_titles">
         <item>הוספת שעון למסך הבית</item>
         <item>הוספת לוח שנה למסך הבית</item>
         <item>הוספת שורת חיפוש של גוגל למסך הבית</item>
     </string-array>
+
+    <array name="array_widgets">
+        <item>@array/array_widgets_titles</item>
+        <item>@array/array_widgets_steps</item>
+    </array>
+
+    <string-array name="array_contacts_titles">
+        <item>הוסף איש קשר חדש</item>
+        <item>מחק איש קשר</item>
+        <item>חפש איש קשר</item>
+    </string-array>
+
+    <array name="array_contacts_steps">
+        <item>@array/array_widget_clock_steps</item>
+        <item>@array/array_widget_clock_steps</item>
+        <item>@array/array_widget_clock_steps</item>
+    </array>
+
+    <array name="array_contacts">
+        <item>@array/array_contacts_titles</item>
+        <item>@array/array_contacts_steps</item>
+    </array>
+    <string-array name="array_notifications">
+        <item>כיבוי/הדלקת התראות</item>
+    </string-array>
+
     <string name="ExplnText">אנו עומדים להתחיל במדריך.  שימו לב! בכל שלב, על מנת לעבור להוראה הבאה, יש ללחוץ על "בוצע". על מנת לשמוע את ההוראה האחרונה שנית, יש ללחוץ על כפתור "עוד" ואז "נגן שוב</string>
     <string name="StartGuide">התחלת מדריך</string>
 

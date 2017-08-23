@@ -1,6 +1,7 @@
 package com.chewie.myguide;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 
 public class CategoriesActivity extends AppCompatActivity {
 
+    public static final String ARRAY_ID_KEY = "array_id";
+
     MediaPlayer mediaPlayer;
 
     @Override
@@ -32,7 +35,7 @@ public class CategoriesActivity extends AppCompatActivity {
         lvCategories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                onSubCatergories(view);
+                onSubCatergories((int)id);
             }
         });
 
@@ -40,12 +43,14 @@ public class CategoriesActivity extends AppCompatActivity {
         mediaPlayer.start();
     }
 
-    public void onSubCatergories(View view)
+    public void onSubCatergories(int id)
     {
         if (mediaPlayer != null)
             mediaPlayer.stop();
+        TypedArray arCats = getResources().obtainTypedArray(R.array.array_categories_ids);
+        int resId = arCats.getResourceId(id, 0);
         Intent intent = new Intent(this, SubCategoriesActivity.class);
+        intent.putExtra(ARRAY_ID_KEY, resId);
         startActivity(intent);
-        finish();
     }
 }
