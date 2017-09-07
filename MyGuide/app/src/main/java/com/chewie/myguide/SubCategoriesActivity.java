@@ -57,5 +57,6 @@ public class SubCategoriesActivity extends AppCompatActivity {
         }
         final AudioFloater floater = new AudioFloater(this, steps, SubCategoriesActivity.class);
         floater.Display();
+        moveTaskToBack(true);
     }
 }
