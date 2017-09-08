@@ -16,7 +16,7 @@
     <string name="btnExit">סיים</string>
 
     <string-array name="array_categories">
-        <item>הוספת יישומונים(ויג\'טים)</item>
+        <item>הוספת יישומונים \\ ויג\'טים (שעון, לוח שנה, מזג-האויר ועוד)</item>
         <item>אנשי קשר</item>
         <item>שימוש בחנות אפליקציות</item>
         <item>התראות</item>
