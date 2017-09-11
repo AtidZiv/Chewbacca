@@ -4,8 +4,8 @@
     <string name="txtPointBlankSpot">יש למצוא מקום ריק כמו בתמונה וללחוץ עליו מספר שניות עד שנפתח חלון נוסף</string>
     <string name="btnCloseUnderstood">הבנתי. סגור</string>
     <string name="btnNextStep">הבא</string>
-    <string name="intro_text">ברוכים הבאים ל- iGuide המדריך האישי שלכם לתפעול המכשיר. ההדרכה הינה הדרכה קולית אשר תלווה אתכם לאורך כל פעולה שתבחרו.</string>
-    <string name="actionType">בחרו בקטגוריה הרצויה:</string>
+    <string name="txtIntro">ברוכים הבאים ל- iGuide המדריך האישי שלכם לתפעול המכשיר. ההדרכה הינה הדרכה קולית אשר תלווה אתכם לאורך כל פעולה שתבחרו.</string>
+    <string name="txtCategoryPick">בחרו בקטגוריה הרצויה</string>
     <string name="widgetButton1">הוספת יישומונים \\ ויג\'טים</string>
     <string name="SubCategoriesIntro">בחרו את הפעולה שתרצו לבצע:</string>
     <string name="btnBack">חזור</string>
@@ -14,64 +14,17 @@
     <string name="btnStartOver">מהתחלה</string>
     <string name="btnPrev">הקודם</string>
     <string name="btnExit">סיים</string>
-
-    <string-array name="array_categories">
-        <item>הוספת יישומונים \\ ויג\'טים (שעון, לוח שנה, מזג-האויר ועוד)</item>
-        <item>אנשי קשר</item>
-        <item>שימוש בחנות אפליקציות</item>
-        <item>התראות</item>
-    </string-array>
-
-    <array name="array_categories_ids">
-        <item>@array/array_widgets</item>
-        <item>@array/array_contacts</item>
-        <item>@array/array_widgets</item>
-        <item>@array/array_notifications</item>
-    </array>
-
-    <array name="array_widget_clock_steps">
-        <item>@raw/widgets_clock_step1</item>
-        <item>@raw/widgets_clock_step2</item>
-        <item>@raw/widgets_clock_step3</item>
-        <item>@raw/widgets_clock_step4</item>
-    </array>
-
-    <array name="array_widgets_steps">
-        <item>@array/array_widget_clock_steps</item>
-        <item>@array/array_widget_clock_steps</item>
-        <item>@array/array_widget_clock_steps</item>
-    </array>
-
-    <string-array name="array_widgets_titles">
-        <item>הוספת שעון למסך הבית</item>
-        <item>הוספת לוח שנה למסך הבית</item>
-        <item>הוספת שורת חיפוש של גוגל למסך הבית</item>
-    </string-array>
-
-    <array name="array_widgets">
-        <item>@array/array_widgets_titles</item>
-        <item>@array/array_widgets_steps</item>
-    </array>
-
-    <string-array name="array_contacts_titles">
-        <item>הוסף איש קשר חדש</item>
-        <item>מחק איש קשר</item>
-        <item>חפש איש קשר</item>
-    </string-array>
-
-    <array name="array_contacts_steps">
-        <item>@array/array_widget_clock_steps</item>
-        <item>@array/array_widget_clock_steps</item>
-        <item>@array/array_widget_clock_steps</item>
-    </array>
-
-    <array name="array_contacts">
-        <item>@array/array_contacts_titles</item>
-        <item>@array/array_contacts_steps</item>
-    </array>
-    <string-array name="array_notifications">
-        <item>כיבוי/הדלקת התראות</item>
-    </string-array>
+    <string name="txtWidgets">הוספת יישומונים \\ ויג\'טים (שעון, לוח שנה, מזג-האויר ועוד)</string>
+    <string name="txtWidgetsAddClock">הוספת שעון למסך הבית</string>
+    <string name="txtWidgetsAddCalendat">הוספת לוח שנה למסך הבית</string>
+    <string name="txtWidgetsAddGoogleSearchBar">הוספת שורת חיפוש של גוגל למסך הבית</string>
+    <string name="txtContacts">אנשי קשר</string>
+    <string name="txtContactsAddNew">הוסף איש קשר חדש</string>
+    <string name="txtContactsDelete">מחק איש קשר</string>
+    <string name="txtContactsSearch">חפש איש קשר</string>
+    <string name="txtPlayStore">שימוש בחנות אפליקציות</string>
+    <string name="txtNotifications">התראות</string>
+    <string name="txtNotificationsTurnOnOff">כיבוי/הדלקת התראות</string>
 
     <string name="ExplnText"> usufhfghאנו עומדים להתחיל במדריך.  שימו לב! בכל שלב, על מנת לעבור להוראה הבאה, יש ללחוץ על "בוצע". על מנת לשמוע את ההוראה האחרונה שנית, יש ללחוץ על כפתור "עוד" ואז "נגן שוב</string>
     <string name="StartGuide">התחלת מדריך</string>

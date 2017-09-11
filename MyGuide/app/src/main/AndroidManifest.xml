@@ -20,18 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".WidgetsActivity"
-            android:theme="@style/Theme.Transparent" />
 
         <service
             android:name=".OverlayerService"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".CategoriesActivity" />
-        <activity android:name=".SubCategoriesActivity" />
-        <activity android:name=".Explanation"></activity>
+        <activity android:name=".CategoriesActivity"
+                  android:parentActivityName=".MainActivity"
+            />
     </application>
 
 </manifest>

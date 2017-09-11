@@ -1,0 +1,69 @@
+{
+    "title" : "@string/txtCategoryPick",
+    "items" : {
+        "add_widgets": {
+            "title" : "@string/txtWidgets",
+            "items" : {
+                "add_clock_to_home" : {
+                    "title" : "@string/txtWidgetsAddClock",
+                    "steps" : [
+                        "@raw/widgets_clock_step1",
+                        "@raw/widgets_clock_step2",
+                        "@raw/widgets_clock_step3",
+                        "@raw/widgets_clock_step4"
+                    ]
+                },
+                "add_calendar_to_home" : {
+                    "title" : "@string/txtWidgetsAddCalendat",
+                    "steps" : [
+                        "@raw/widgets_clock_step1",
+                        "@raw/widgets_clock_step2",
+                        "@raw/widgets_clock_step3",
+                        "@raw/widgets_clock_step4"
+                    ]
+                },
+                "add_google_searchbar_to_home" : {
+                    "title" : "@string/txtWidgetsAddGoogleSearchBar",
+                    "steps" : [
+                        "@raw/widgets_clock_step1",
+                        "@raw/widgets_clock_step2",
+                        "@raw/widgets_clock_step3",
+                        "@raw/widgets_clock_step4"
+                    ]
+                }
+            }
+        },
+        "contacts": {
+            "title" : "@string/txtContacts",
+            "items" : {
+                "add_new_contact" : {
+                    "title" : "@string/txtContactsAddNew",
+                    "items" : {}
+                },
+                "delete_contact" : {
+                    "title" : "@string/txtContactsDelete",
+                    "items" : {}
+                },
+                "search_contact" : {
+                    "title" : "@string/txtContactsSearch",
+                    "items" : {}
+                }
+            }
+        },
+        "play_store": {
+            "title" : "@string/txtPlayStore",
+            "items" : {
+            }
+        },
+        "notifications": {
+            "title" : "@string/txtNotifications",
+            "items" : {
+                "turn_notifications_on_off" : {
+                    "title": "@string/txtNotificationsTurnOnOff",
+                    "steps": [
+                    ]
+                }
+            }
+        }
+    }
+}
