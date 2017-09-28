@@ -27,8 +27,6 @@ import java.util.Iterator;
 
 public class CategoriesActivity extends AppCompatActivity {
 
-    public static final String ARRAY_ID_KEY = "array_id";
-
     TextView txtTitle;
     JSONObject guide;
     String guidePath = "root";
@@ -143,6 +141,19 @@ public class CategoriesActivity extends AppCompatActivity {
         startMain.addCategory(Intent.CATEGORY_HOME);
         startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(startMain);
+
+        try {
+            JSONObject curGuide = getJsonByPath(guide, guidePath);
+            if (curGuide == null)
+                return;
+            JSONArray steps = curGuide.getJSONArray("tracker_steps");
+            Intent tracker = new Intent(this, TrackerService.class);
+            tracker.putExtra(TrackerService.STEPS, steps.toString());
+            startService(tracker);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        finish();
     }
 
     @Override

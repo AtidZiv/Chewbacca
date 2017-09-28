@@ -11,6 +11,10 @@
                         "@raw/widgets_clock_step2",
                         "@raw/widgets_clock_step3",
                         "@raw/widgets_clock_step4"
+                    ],
+                    "tracker_steps" : [
+                      ["widgets", "ויג'טים", "ישומונים"],
+                      ["clock", "שעון"]
                     ]
                 },
                 "add_calendar_to_home" : {
@@ -20,7 +24,11 @@
                         "@raw/widgets_clock_step2",
                         "@raw/widgets_clock_step3",
                         "@raw/widgets_clock_step4"
-                    ]
+                    ],
+                  "tracker_steps" : [
+                    ["widgets", "ויג'טים", "ישומונים"],
+                    ["calendar", "לוח שנה"]
+                  ]
                 },
                 "add_google_searchbar_to_home" : {
                     "title" : "@string/txtWidgetsAddGoogleSearchBar",

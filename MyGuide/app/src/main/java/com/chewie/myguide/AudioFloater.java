@@ -53,6 +53,11 @@ public class AudioFloater extends Floater {
         AudioFloater.super.Display();
     }
 
+    void clearTrackerSteps() {
+        Intent tracker = new Intent(context, TrackerService.class);
+        context.startService(tracker);
+    }
+
     void setButtons() {
         btnStartOver = new Button(context);
         btnStartOver.setText(R.string.btnStartOver);
@@ -101,6 +106,7 @@ public class AudioFloater extends Floater {
                 Intent intent = new Intent(context, backToActivityClass);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
+                clearTrackerSteps();
             }
         });
 
@@ -121,6 +127,7 @@ public class AudioFloater extends Floater {
                 if (mediaPlayer != null)
                     mediaPlayer.stop();
                 Dismiss();
+                clearTrackerSteps();
             }
         });
     }
