@@ -40,7 +40,10 @@ public class AudioFloater extends Floater {
     }
 
     void showLess() {
-        showLess(new Button[]{btnMore, btnNext});
+        if (Utility.isServiceOn(context))
+            showLess(new Button[]{btnMore});
+        else
+            showLess(new Button[]{btnMore, btnNext});
     }
 
      void showMore() {
@@ -48,7 +51,8 @@ public class AudioFloater extends Floater {
         AddChild(btnStartOver, marginX, marginY, btnWidth, btnHeight);
         AddChild(btnBackToActivity, marginX+btnWidth, marginY, btnWidth, btnHeight);
         AddChild(btnPlayAgain, marginX, btnHeight, btnWidth, btnHeight);
-        AddChild(btnNext, marginX+btnWidth, btnHeight, btnWidth, btnHeight);
+        if (!Utility.isServiceOn(context))
+            AddChild(btnNext, marginX+btnWidth, btnHeight, btnWidth, btnHeight);
         AddChild(btnExit, marginX+btnWidth, btnHeight*2, btnWidth, btnHeight);
         AudioFloater.super.Display();
     }

@@ -43,7 +43,7 @@ public class Floater {
 
     void setParams(Context context, int floaterType, int height, int width) {
         this.floaterType = floaterType;
-        this.context = context.getApplicationContext();
+        this.context = context;
         this.height = height;
         this.width = width;
     }

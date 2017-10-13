@@ -18,24 +18,14 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     final static public String TAG = "MyGuide";
-    final public static String SEND_TEXT_KEY = "SendText";
     static boolean playedMedia = false;
     MediaPlayer mediaPlayer = null;
 
-    private boolean isServiceOn() {
-        int accessibilityEnabled = 0;
-        try {
-            accessibilityEnabled = Settings.Secure.getInt(getContentResolver(),
-                    android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
-        } catch (Settings.SettingNotFoundException e) {
-        }
-
-        return accessibilityEnabled == 1;
-    }
-
     void ensureServiceIsRunning() {
-        if (!isServiceOn()) {
-            startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+        if (!Utility.isServiceOn(this)) {
+            Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+            intent.setComponent(intent.resolveActivity(getPackageManager()));
+            startActivity(intent);
         }
         Log.v(TAG, "Service is running: "+TrackerService.isServiceRunning());
     }
@@ -63,18 +53,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStart(){
+        if (!playedMedia) {
+            mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.intro);
+            playedMedia = true;
+            mediaPlayer.start();
+        }
         super.onStart();
-        if (playedMedia)
-            return;
-        mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.intro);
-        playedMedia = true;
-        mediaPlayer.start();
     }
 
     @Override
     protected void onPause(){
-        if (mediaPlayer != null)
+        if (mediaPlayer != null) {
             mediaPlayer.stop();
+        }
         super.onPause();
     }
 

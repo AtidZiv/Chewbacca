@@ -68,7 +68,7 @@ public class TrackerService extends AccessibilityService {
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        Log.v(TAG, String.format(
+        Log.d(TAG, String.format(
                 "onAccessibilityEvent: [type] %s [class] %s [package] %s [time] %s [text] %s",
                 getEventType(event), event.getClassName(), event.getPackageName(),
                 event.getEventTime(), getEventText(event)));
@@ -159,14 +159,9 @@ public class TrackerService extends AccessibilityService {
         _arrowDirection = arrow;
         _lastNode = node;
 
-        AccessibilityNodeInfo nodeParent = node.getParent();
-        Rect boundsParent = new Rect();
-        nodeParent.getBoundsInScreen(boundsParent);
         int nodeh = bounds.height();
         if (_arrowDirection == ARROW_DIRECTION.Down) {
-            if (boundsParent.height() < screenSize.y/2)
-                nodeh = boundsParent.height();
-            nodeh *= -1;
+            nodeh = - nodeh - 20;
         }
 
         int xpos = bounds.left + bounds.width()/2 - screenSize.x/2;

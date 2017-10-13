@@ -29,7 +29,8 @@ public class CategoriesActivity extends AppCompatActivity {
 
     TextView txtTitle;
     JSONObject guide;
-    String guidePath = "root";
+    static final String STATE_JSON_ROOT_DEFAULT_VALUE = "root";
+    String guidePath = STATE_JSON_ROOT_DEFAULT_VALUE;
 
     MediaPlayer mediaPlayer;
 
@@ -153,7 +154,7 @@ public class CategoriesActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        finish();
+        goBack();
     }
 
     @Override
@@ -169,12 +170,28 @@ public class CategoriesActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    protected void onPause(){
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+        }
+        super.onPause();
+    }
+
+    boolean goBack() {
         if (!guidePath.equals("root")) {
             guidePath = guidePath.substring(0, guidePath.lastIndexOf(":"));
             setGuide();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!goBack()) {
             return;
         }
 
         super.onBackPressed();
-    }}
+    }
+}
