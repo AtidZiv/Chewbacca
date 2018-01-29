@@ -39,7 +39,7 @@ public class Floater {
     int width;
     ArrayList<FloaterChild> children = new ArrayList<>();
     int bgColor = Color.DKGRAY;
-    RelativeLayout topView = null;
+    protected RelativeLayout topView = null;
 
     void setParams(Context context, int floaterType, int height, int width) {
         this.floaterType = floaterType;

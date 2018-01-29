@@ -25,8 +25,10 @@ public class TrackerService extends AccessibilityService {
         Down
     }
 
-    final static public String TAG = "MyGuide";
     final static public String STEPS = "steps";
+    final static public String ACTION_NEXT_STEP = "NextStep";
+
+    LocalBroadcastManager localBroadcastManager = null;
     View _floater = null;
     JSONArray _steps = null;
     int _curStep = -1;
@@ -66,9 +68,16 @@ public class TrackerService extends AccessibilityService {
         return sb.toString();
     }
 
+    private void nextStep() {
+        _curStep++;
+        Intent intent = new Intent(ACTION_NEXT_STEP);
+        getApplicationContext().sendBroadcast(intent);
+        Log.d(MainActivity.TAG, "Send broadcast with action "+intent.getAction());
+    }
+
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        Log.d(TAG, String.format(
+        Log.d(MainActivity.TAG, String.format(
                 "onAccessibilityEvent: [type] %s [class] %s [package] %s [time] %s [text] %s",
                 getEventType(event), event.getClassName(), event.getPackageName(),
                 event.getEventTime(), getEventText(event)));
@@ -78,14 +87,16 @@ public class TrackerService extends AccessibilityService {
         try {
             JSONArray step_captions = _steps.getJSONArray(_curStep);
             String eventText = getEventText(event).toLowerCase();
+
             boolean match = false;
             for(int i=0; i<step_captions.length(); i++) {
                 String caption = step_captions.getString(i);
                 if ((match = eventText.contains(caption)) == true)
                     break;
             }
-            if (match)
-                _curStep++;
+            if (match) {
+                nextStep();
+            }
 
             if (_curStep == _steps.length()) {
                 showViewForNode(null);
@@ -107,7 +118,7 @@ public class TrackerService extends AccessibilityService {
 
     @Override
     public void onInterrupt() {
-        Log.v(TAG, "onInterrupt");
+        Log.v(MainActivity.TAG, "onInterrupt");
     }
 
     private AccessibilityNodeInfo findTextNode(AccessibilityNodeInfo root, String text) {
@@ -133,10 +144,11 @@ public class TrackerService extends AccessibilityService {
                 }
             }
         }
-        Log.d(TAG, "Found node: " + node_found);
+//        Log.d(MainActivity.TAG, "Found node: " + node_found);
         return node_found;
     }
 
+    boolean showAnimator = true;
     void showViewForNode(AccessibilityNodeInfo node) {
         WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
         Object parent = _floater == null ? null : _floater.getParent();
@@ -151,6 +163,10 @@ public class TrackerService extends AccessibilityService {
         wm.getDefaultDisplay().getSize(screenSize);
         Rect bounds = new Rect();
         node.getBoundsInScreen(bounds);
+        if (bounds.top < 0 || bounds.top > screenSize.y ||
+                bounds.left < 0 || bounds.left > screenSize.x) {
+            return;
+        }
 
         ARROW_DIRECTION arrow = (bounds.top < screenSize.y/2) ? ARROW_DIRECTION.Up : ARROW_DIRECTION.Down;
         if (_arrowDirection != arrow)
@@ -182,12 +198,19 @@ public class TrackerService extends AccessibilityService {
             _floater = img;
         }
         wm.addView(_floater, params);
+
+        if (showAnimator && _curStep == _steps.length()-1) {
+            AnimationFloater anim = new AnimationFloater(getApplicationContext(), xpos, ypos);
+            anim.RunAnimation();
+            showAnimator = false;
+        }
     }
 
     @Override
     protected void onServiceConnected() {
-        Log.v(TAG, "service connected");
+        Log.v(MainActivity.TAG, "service connected");
         _isServiceRunning = true;
+        localBroadcastManager = LocalBroadcastManager.getInstance(this.getApplicationContext());
     }
 
     @Override

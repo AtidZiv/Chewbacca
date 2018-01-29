@@ -1,9 +1,15 @@
 package com.chewie.myguide;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.PixelFormat;
+import android.graphics.Point;
 import android.media.MediaPlayer;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 /**
@@ -40,13 +46,31 @@ public class AudioFloater extends Floater {
     }
 
     void showLess() {
-        if (Utility.isServiceOn(context))
-            showLess(new Button[]{btnMore});
-        else
+//        if (Utility.isServiceOn(context))
+//            showLess(new Button[]{btnMore});
+//        else
             showLess(new Button[]{btnMore, btnNext});
     }
 
-     void showMore() {
+    void showStart() {
+        int width = 400;
+        int height = 400;
+        resizeAndClear(width, height);
+        Button btnStartGuide = new Button(context);
+        btnStartGuide.setText(R.string.btnStartOver);
+        btnStartGuide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLess();
+                curStep = 0;
+                playCurrentStep();
+                btnNext.setEnabled(true);
+            }
+        });
+        AddChild(btnStartGuide, marginX, marginY, width, height);
+    }
+
+    void showMore() {
         resizeAndClear(btnWidth*2, btnHeight*3);
         AddChild(btnStartOver, marginX, marginY, btnWidth, btnHeight);
         AddChild(btnBackToActivity, marginX+btnWidth, marginY, btnWidth, btnHeight);
@@ -60,6 +84,15 @@ public class AudioFloater extends Floater {
     void clearTrackerSteps() {
         Intent tracker = new Intent(context, TrackerService.class);
         context.startService(tracker);
+    }
+
+    void playNextStep() {
+        curStep++;
+        playCurrentStep();
+        if (curStep == steps.length-1)
+            showLess(new Button[]{btnMore, btnExit});
+        else
+            showLess();
     }
 
     void setButtons() {
@@ -80,12 +113,7 @@ public class AudioFloater extends Floater {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                curStep++;
-                playCurrentStep();
-                if (curStep == steps.length-1)
-                    showLess(new Button[]{btnMore, btnExit});
-                else
-                    showLess();
+                playNextStep();
             }
         });
 
@@ -136,19 +164,33 @@ public class AudioFloater extends Floater {
         });
     }
 
+    private BroadcastReceiver listener;
     public AudioFloater(final Context context, int[] steps, Class backToActivityClass) {
         super(context, 300, 250);
         setButtons();
 
         this.steps = steps;
         this.backToActivityClass = backToActivityClass;
-        curStep = 0;
-        playCurrentStep();
+        curStep = -1;
+
+        listener = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.d(MainActivity.TAG, "recevied broadcast action "+intent.getAction());
+                if (intent.getAction().equals(TrackerService.ACTION_NEXT_STEP))
+                    playNextStep();
+            }
+        };
+        IntentFilter filter = new IntentFilter(TrackerService.ACTION_NEXT_STEP);
+        context.getApplicationContext().registerReceiver(listener, filter);
     }
 
     @Override
     public void Display() {
-        showLess();
+        if (curStep == -1)
+            showStart();
+        else
+            showLess();
         super.Display();
     }
 }
