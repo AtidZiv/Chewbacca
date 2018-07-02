@@ -90,6 +90,9 @@ public class CategoriesActivity extends AppCompatActivity {
     void showSubCategory(JSONObject curGuide) throws JSONException{
         txtTitle.setText(getStringByStringId(curGuide.getString("title"))+":");
         setItems(curGuide);
+        mediaPlayer.stop();
+        mediaPlayer = MediaPlayer.create(CategoriesActivity.this, R.raw.select_sub_category);
+        mediaPlayer.start();
     }
 
     void showFloater(JSONObject curGuide) throws JSONException {

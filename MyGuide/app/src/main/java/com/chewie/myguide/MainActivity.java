@@ -64,9 +64,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause(){
         if (mediaPlayer != null) {
+            playedMedia = !mediaPlayer.isPlaying();
             mediaPlayer.stop();
         }
         super.onPause();
+    }
+
+    @Override
+    protected void onStop(){
+        playedMedia = false;
+        super.onStop();
     }
 
     public void onCategories(View view)
